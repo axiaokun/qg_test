@@ -1,0 +1,31 @@
+# Project: Calculator
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = 代码和头文件/function/main.o 代码和头文件/function/head_file.o
+LINKOBJ  = 代码和头文件/function/main.o 代码和头文件/function/head_file.o
+LIBS     = -L"D:/dev/devc++/Dev-Cpp/MinGW64/lib" -L"D:/dev/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/dev/devc++/Dev-Cpp/MinGW64/include" -I"D:/dev/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/dev/devc++/Dev-Cpp/MinGW64/include" -I"D:/dev/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/dev/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/dev/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Calculator.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+代码和头文件/function/main.o: 代码和头文件/function/main.c
+	$(CC) -c 代码和头文件/function/main.c -o 代码和头文件/function/main.o $(CFLAGS)
+
+代码和头文件/function/head_file.o: 代码和头文件/function/head_file.c
+	$(CC) -c 代码和头文件/function/head_file.c -o 代码和头文件/function/head_file.o $(CFLAGS)
